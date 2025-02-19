@@ -9,10 +9,8 @@ Este repositório contém implementações dos métodos iterativos **Jacobi** e 
 ### **Método de Jacobi (C++)**
 - **Teoria**: 
   - Atualiza iterativamente cada variável usando os valores da iteração anterior.
-  - Fórmula para a variável \( x_i^{(k+1)} \):
-    \[
-    x_i^{(k+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{j \neq i} a_{ij}x_j^{(k)} \right)
-    \]
+  - Fórmula para a variável:
+
   - Exige que a matriz seja **diagonalmente dominante** para convergência garantida.
 - **Implementação**:
   - Utiliza dois vetores para armazenar os valores das iterações atual e seguinte.
@@ -22,10 +20,8 @@ Este repositório contém implementações dos métodos iterativos **Jacobi** e 
 ### **Método de Gauss-Seidel (Python)**
 - **Teoria**:
   - Acelera a convergência usando os valores mais recentes atualizados **dentro da mesma iteração**.
-  - Fórmula atualiza \( x_i^{(k+1)} \) sequencialmente:
-    \[
-    x_i^{(k+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{j < i} a_{ij}x_j^{(k+1)} - \sum_{j > i} a_{ij}x_j^{(k)} \right)
-    \]
+  - Fórmula atualiza:
+
   - Também requer dominância diagonal para convergência.
 - **Implementação**:
   - Utiliza a biblioteca `numpy` para operações eficientes com matrizes e vetores.
