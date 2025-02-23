@@ -1,4 +1,4 @@
-```markdown
+
 # Iterative Methods for Linear Systems: Jacobi vs. Gauss-Seidel
 
 Repositório contendo implementações em Python dos métodos iterativos de Jacobi e Gauss-Seidel para resolução de sistemas lineares.
@@ -24,6 +24,8 @@ Dois algoritmos numéricos para resolver sistemas lineares `Ax = b`:
 - NumPy (`pip install numpy`)
 
 ## 🚀 Como Usar
+
+
 1. **Entrada da Matriz**:
 ```bash
 Número de linhas: 3
