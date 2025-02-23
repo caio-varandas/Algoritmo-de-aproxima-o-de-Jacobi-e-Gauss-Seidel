@@ -4,7 +4,7 @@ def jacobi(A, b, x0=0, tolerancia=1e-10, max_iter=100):
     n=len(b)
     x=np.zeros(n) if x0==0 else x0 #vetor com xn's inicialmente zerado
     D=np.diag(A) #pega a diagonal principal
-    R=A-np.diagflat(D) #cria uma matriz mas e zera a diagonal principal
+    R=A-np.diagflat(D) #cria uma matriz e zera a diagonal principal
     iteracoes=0
     while iteracoes<max_iter:
         #np.dot faz o calculo da multiplicacao da matriz R pelo vetor x
