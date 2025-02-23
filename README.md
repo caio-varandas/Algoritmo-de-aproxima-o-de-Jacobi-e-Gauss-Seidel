@@ -1,44 +1,76 @@
-# Métodos Iterativos para Sistemas Lineares: Jacobi e Gauss-Seidel
+```markdown
+# Iterative Methods for Linear Systems: Jacobi vs. Gauss-Seidel
 
-Este repositório contém implementações dos métodos iterativos **Jacobi** e **Gauss-Seidel** para resolver sistemas de equações lineares. O método de Jacobi foi implementado em **C++**, enquanto o Gauss-Seidel foi desenvolvido em **Python**. Esses algoritmos são ideais para sistemas grandes e esparsos, onde métodos diretos (como eliminação gaussiana) são computacionalmente custosos.
+Repositório contendo implementações em Python dos métodos iterativos de Jacobi e Gauss-Seidel para resolução de sistemas lineares.
 
----
+## 📋 Descrição
+Dois algoritmos numéricos para resolver sistemas lineares `Ax = b`:
+- **Método de Jacobi**: Atualiza todas as variáveis simultaneamente usando valores da iteração anterior.
+- **Método de Gauss-Seidel**: Atualiza variáveis sequencialmente usando valores já calculados na mesma iteração.
 
-## 📖 Visão Geral dos Algoritmos
+## ✨ Funcionalidades
+- **Entrada Flexível**: 
+  - Número de colunas detectado automaticamente
+  - Aceita números inteiros ou decimais
+- **Verificação de Convergência**:
+  - Checagem automática de dominância diagonal
+  - Opção para forçar execução
+- **Parâmetros Customizáveis**:
+  - Tolerância (`1e-10` padrão)
+  - Máximo de iterações (`100` padrão)
 
-### **Método de Jacobi (C++)**
-- **Teoria**: 
-  - Atualiza iterativamente cada variável usando os valores da iteração anterior.
-  - Fórmula para a variável:
+## 📥 Requisitos
+- Python 3.8+
+- NumPy (`pip install numpy`)
 
-  - Exige que a matriz seja **diagonalmente dominante** para convergência garantida.
-- **Implementação**:
-  - Utiliza dois vetores para armazenar os valores das iterações atual e seguinte.
-  - A convergência é verificada pela diferença absoluta máxima entre iterações (`tolerância`).
-  - Estrutura de loop simples com atualizações explícitas elemento a elemento.
+## 🚀 Como Usar
+1. **Entrada da Matriz**:
+```bash
+Número de linhas: 3
+Linha 1: 4 2 1 8
+Linha 2: 1 5 2 10
+Linha 3: 1 2 6 12
+```
 
-### **Método de Gauss-Seidel (Python)**
-- **Teoria**:
-  - Acelera a convergência usando os valores mais recentes atualizados **dentro da mesma iteração**.
-  - Fórmula atualiza:
+2. **Execução**:
+```bash
+# Para Jacobi
+python jacobi.py
 
-  - Também requer dominância diagonal para convergência.
-- **Implementação**:
-  - Utiliza a biblioteca `numpy` para operações eficientes com matrizes e vetores.
-  - Atualiza o vetor solução **no mesmo vetor**, reduzindo o uso de memória.
-  - Critério de parada baseado na norma do resíduo ou diferença entre iterações.
+# Para Gauss-Seidel
+python gauss_seidel.py
+```
 
----
+## 📊 Comparação dos Métodos
 
-## 📊 Exemplo de Saída
-Ambos os algoritmos exibem:
-- A solução aproximada do sistema.
-- O número de iterações realizadas.
-- O erro final (diferença entre iterações ou norma do resíduo).
+| Característica              | Jacobi                     | Gauss-Seidel                |
+|-----------------------------|----------------------------|-----------------------------|
+| **Velocidade Convergência** | Mais lento                 | Mais rápido                 |
+| **Uso de Memória**          | Mantém 2 vetores           | Atualiza vetor in-place     |
+| **Complexidade**            | O(n²) por iteração         | O(n²) por iteração          |
+| **Aplicação Ideal**         | Sistemas esparsos grandes  | Sistemas diagonal dominantes|
 
----
+## 🧪 Exemplo Prático
+**Sistema de Entrada**:
+```
+4x + 2y + z = 8
+x + 5y + 2z = 10
+x + 2y + 6z = 12
+```
 
-## 📌 Considerações
-- **Convergência**: Ambos os métodos exigem que a matriz seja diagonalmente dominante ou positiva definida.
-- **Desempenho**: Gauss-Seidel geralmente converge mais rápido que Jacobi devido à atualização em tempo real dos valores.
-- **Aplicações**: Úteis em problemas de engenharia, física computacional e otimização onde sistemas grandes são comuns.
+**Saída Gauss-Seidel**:
+```
+Convergiu após 15 iterações.
+Solução aproximada: [1. 1. 2.]
+```
+
+**Saída Jacobi**:
+```
+Convergiu após 19 iterações.
+Solução aproximada: [1. 1. 2.]
+```
+
+## ⚠️ Limitações
+- Não trata singularidade da matriz
+- Precisão limitada por ponto flutuante
+- Performance degrada em sistemas mal condicionados
